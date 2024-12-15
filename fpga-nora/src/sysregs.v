@@ -233,14 +233,14 @@ module sysregs (
 
     reg   fpga_boot;
 
-`ifndef SIMULATION
-    // fpga warm boot trigger
-    SB_WARMBOOT fpgares (
-        .BOOT (fpga_boot),
-	    .S1 (1'b0),
-	    .S0 (1'b0)
-    );
-`endif
+//`ifndef SIMULATION
+//    // fpga warm boot trigger
+//    SB_WARMBOOT fpgares (
+//        .BOOT (fpga_boot),
+//	    .S1 (1'b0),
+//	    .S0 (1'b0)
+//    );
+//`endif
 
     // I2C Master register
     always @(posedge clk)

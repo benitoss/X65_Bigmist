@@ -68,7 +68,7 @@ module aura
     wire [7:0] dout;
     wire  dout_en;
 
-    assign AIRQN = irq_n;
+    assign AIRQN = 1'b1; //irq_n;    //rampa. Acuerdate cuando metas el chip....
 
     // parallel output DAC data from the OPM
     wire signed  [15:0] opm_left_chan;

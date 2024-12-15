@@ -1,7 +1,7 @@
 /* Copyright (c) 2023-2024 Jaroslav Sykora.
  * Terms and conditions of the MIT License apply; see the file LICENSE in top-level directory. */
 /* NORA FPGA top */
-module top (
+module top_nora (
 // 12MHz FPGA clock input
     input FPGACLK,
 
@@ -123,14 +123,14 @@ module top (
     wire rst_req;
     wire resetn;
 
-`ifdef SIMULATION
-    // simulation - skip PLL
+//`ifdef SIMULATION
+//    // simulation - skip PLL
     assign clk6x = FPGACLK;
     assign clk6x_locked = 1'b1;
-`else
-    // synthesis PLL
-    pll pll0 ( .clock_in(FPGACLK), .clock_out(clk6x), .locked(clk6x_locked));
-`endif
+//`else
+//    // synthesis PLL
+//    pll pll0 ( .clock_in(FPGACLK), .clock_out(clk6x), .locked(clk6x_locked));
+//`endif
 
     /**
     * Autonomous reset generator
@@ -852,7 +852,7 @@ module top (
         // UART RX/TX signal to the FPGA pin
         .rx_pin_i (UART_RX),
         .tx_pin_o (UART_TX),
-        .txde_o (open),              // tx drive enable, active high
+        .txde_o (),              // tx drive enable, active high
         .cts_pin_i (UART_CTS),
         .rts_pin_o (UART_RTS),
         //
